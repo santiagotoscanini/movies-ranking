@@ -9,17 +9,17 @@ ini_set('display_errors', 1);
     <title>Sitio de Ventas</title>
     <link rel="stylesheet" type="text/css" href="css/ventas.css">
     <script type="text/javascript" src="js/libraries/jquery/jquery-3.4.1.min"></script>
-    <link rel="stylesheet" href="js/libraries/bootstrap/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="js/libraries/bootstrap/css/bootstrap.min.css">
     <script src="js/libraries/bootstrap/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 </head>
-<body>
 
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -43,7 +43,7 @@ ini_set('display_errors', 1);
 <div id="encabezado">
     <img src="img/logo.png">
     <?php
-    echo("<h1>" . "Titulo desde php" . "</h1>");
+    echo("<h1>" . "Titulo desde phpeeeeeee" . "</h1>");
     ?>
     <h2>El mejor sitio de compras en la web</h2>
 </div>
