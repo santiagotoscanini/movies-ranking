@@ -16,4 +16,8 @@
   border-radius: 10px;
 }
 
+.buttons-container{
+  float: right;
+  margin: 18px;
+}
 

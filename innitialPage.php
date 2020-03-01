@@ -16,13 +16,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel = "stylesheet" type = "text/css" href = "css/bar-style.css" >
+    <link rel="stylesheet" type="text/css" href="css/bar-style.css">
     <script type="text/javascript">
-            // Prevent dropdown menu from closing when click inside the form
-            $(document).on("click", ".navbar-right .dropdown-menu", function(e) {
-                e.stopPropagation();
-            });
+        // Prevent dropdown menu from closing when click inside the form
+        $(document).on("click", ".navbar-right .dropdown-menu", function(e) {
+            e.stopPropagation();
+        });
     </script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -38,7 +44,7 @@
             }
         }
     </script>
-<!--     
+    <!--     
     <nav class="navbar navbar-default navbar-expand-lg navbar-light">
         <div class="navbar-header d-flex col">
             <a class="navbar-brand" href="#">Movies<b>SSTT</b></a>
@@ -96,6 +102,14 @@
         <iframe class="cards-frame" src="cards.php" frameborder="0"></iframe>
         <iframe class="cards-frame" src="cards.php" frameborder="0"></iframe>
         <iframe class="cards-frame" src="cards.php" frameborder="0"></iframe>
+    </div>
+
+    <div class="buttons-container">
+        <button type="button" class="btn btn-prymary" id="start-button">
+            <<-</button> <button type="button" class="btn btn-outline-info nav-button" id="back-button">
+                <-</button> <button type="button" class="btn btn-outline-info nav-button" id="next-button">->
+        </button>
+        <button type="button" class="btn btn-outline-info nav-button" id="end-button">->></button>
     </div>
 
 </body>
