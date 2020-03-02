@@ -8,18 +8,18 @@
     <title>MoviesSSTT</title>
 
     <link rel="stylesheet" type="text/css" href="css/initial_page.css">
+    <link rel="stylesheet" type="text/css" href="card.html.tpl">
+
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="lib/font-awesome/4.7.0/font-awesome.min">
     <link rel="stylesheet" href="lib/bootstrap/4.4.1/css/bootstrap.min">
 
-    <script type="text/javascript" src="js/initial_page.js"></script>
-    <script type="text/javascript" src="lib/jquery/jquery.min"></script>
     <script type="text/javascript" src="lib/bootstrap/4.4.1/js/bootstrap.min"></script>
+    <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
 </head>
 
-<body style="margin:0 0 0 0" class="body">
-
+<body>
 {include file="header.html.tpl" genres=$genres}
 
 <div class="cards-container">
@@ -29,7 +29,7 @@
 </div>
 
 <div class="buttons-container">
-    <button type="button" class="btn btn-prymary" id="start-button">
+    <button type="button" class="btn btn-outline-info nav-button" id="start-button">
         <<-
     </button>
     <button type="button" class="btn btn-outline-info nav-button" id="back-button">

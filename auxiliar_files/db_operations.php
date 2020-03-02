@@ -1,8 +1,9 @@
 <?php
 ini_set('display_errors', 1);
 
-require_once "db_conn.php";
-$config = require_once 'config.php';
+require_once "auxiliar_files/db_conn.php";
+
+$config = require_once 'auxiliar_files/config.php';
 define('DB_ADDRESS', $config["DB_ADDRESS"]);
 define('DB_NAME', $config["DB_NAME"]);
 define('DB_USER', $config["DB_USER"]);
@@ -29,17 +30,16 @@ function getMovies()
     return $cn->fetchAll();
 }
 
-/*function getMovie($id)
+function getMovie($id)
 {
     $cn = connectDB();
-    $
     $cn->query(
-            'SELECT * FROM peliculas '\
-. 'WHERE id = :id ', array(
-    array("id", $id, 'int')
-));
-return $cn->fetchAssoc();
-}*/
+        'SELECT * FROM peliculas WHERE id = :id ',
+        array(
+            array("id", $id, 'int')
+        ));
+    return $cn->fetchAssoc();
+}
 
 /*function getComments($id)
 {
@@ -49,8 +49,9 @@ return $cn->fetchAssoc();
         . 'FROM comentarios,usuarios '
         . 'WHERE comentarios.id_pelicula = :id AND '
         . 'usuarios.id = comentarios.id AND '
-        . 'comentarios.estado = 'APROBADO'', array(
-    array("id", $id, 'int')
-));
-return $cn->fetchAll();
-} */
+        . 'comentarios.estado = 'APROBADO'',
+    array(
+        array("id", $id, 'int')
+    ));
+    return $cn->fetchAll();
+}*/
