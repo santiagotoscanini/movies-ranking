@@ -20,7 +20,7 @@
 
 <body style="margin:0 0 0 0" class="body">
 
-{include file="header.html.tpl"}
+{include file="header.html.tpl" genres=$genres}
 
 <div class="cards-container">
     {foreach from=$movies item=movie}

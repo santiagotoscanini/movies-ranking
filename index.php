@@ -5,4 +5,5 @@ require_once("smarty.php");
 
 $smarty = getSmarty();
 $smarty -> assign("movies", getMovies());
+$smarty -> assign("genres", getGenres());
 $smarty->display("initial_page.html.tpl");

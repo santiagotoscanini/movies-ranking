@@ -63,8 +63,8 @@ class DatabaseConnection
                             $tipo = PDO::PARAM_STR;
                             break;
                     }
+                    $this->statment->bindParam($param[0], $param[1], $tipo);
                 }
-                $this->statment->bindParam($param[0], $param[1], $tipo);
             }
             $this->statment->execute();
             $return = true;
