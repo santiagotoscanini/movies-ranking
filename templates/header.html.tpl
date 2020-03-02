@@ -34,7 +34,7 @@
                 <a href="#" class="nav-link">Comentarios</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Nueva pelicula</a>
+                <a href="movie_form.php?#" class="nav-link">Nueva pelicula</a>
             </li>
         </ul>
 
