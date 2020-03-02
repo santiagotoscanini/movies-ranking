@@ -26,7 +26,7 @@ function getGenres()
 function getMovies()
 {
     $cn = connectDB();
-    $cn->query("SELECT * FROM peliculas");
+    $cn->query("SELECT peliculas.titulo, peliculas.resumen, peliculas.id, peliculas.puntuacion, generos.nombre FROM peliculas, generos WHERE generos.id = peliculas.id_genero");
     return $cn->fetchAll();
 }
 

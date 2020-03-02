@@ -1,0 +1,1 @@
+{include file="header.html.tpl" genres=$genres}
