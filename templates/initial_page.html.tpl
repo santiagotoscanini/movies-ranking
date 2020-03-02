@@ -8,7 +8,6 @@
     <title>MoviesSSTT</title>
 
     <link rel="stylesheet" type="text/css" href="css/initial_page.css">
-    <link rel="stylesheet" type="text/css" href="card.html.tpl">
 
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -24,7 +23,7 @@
 
 <div class="cards-container">
     {foreach from=$movies item=movie}
-        {include file="card.html.tpl" movie=$movie}
+        {include file="movie_card.html.tpl" movie=$movie}
     {/foreach}
 </div>
 
