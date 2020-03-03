@@ -6,4 +6,4 @@ require_once("auxiliar_files/smarty.php");
 $smarty = getSmarty();
 $smarty -> assign("movies", getMovies());
 $smarty -> assign("genres", getGenres());
-$smarty->display("initial_page.html.tpl");
+$smarty->display("page_initial.html.tpl");

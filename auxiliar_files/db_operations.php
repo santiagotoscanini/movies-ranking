@@ -34,12 +34,40 @@ function getMovie($id)
 {
     $cn = connectDB();
     $cn->query(
-        'SELECT * FROM peliculas WHERE id = :id ',
+        '
+            SELECT 
+                peliculas.*,
+                generos.nombre 
+            FROM peliculas, generos WHERE peliculas.id = :id AND generos.id = peliculas.id_genero ',
         array(
             array("id", $id, 'int')
         ));
     return $cn->fetchAssoc();
 }
+
+function areValidCredentials($email, $pass)
+{
+    $cn = connectDB();
+    $cn->query(
+        'SELECT * FROM usuarios WHERE email=:email AND password=:pass ',
+        array(
+            array('email', $email, 'string'),
+            array('pass', $pass, 'string')
+        ));
+    return $cn->fetchAssoc();
+}
+
+function getMovieFilteredByGenre($genre)
+{
+    $cn = connectDB();
+    $cn->query(
+        'SELECT * FROM movies WHERE id_genero=:genre ',
+        array(
+            array('genre', $genre, 'int')
+        ));
+    return $cn->fetchAll();
+}
+
 
 /*function getComments($id)
 {

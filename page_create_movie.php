@@ -5,4 +5,4 @@ require_once("auxiliar_files/smarty.php");
 
 $smarty = getSmarty();
 $smarty->assign("genres", getGenres());
-$smarty->display("movie_page.html.tpl");
+$smarty->display("page_create_movie.html.tpl");

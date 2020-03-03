@@ -8,7 +8,7 @@
             <b>Resumen:</b> {$movie.resumen}
         </p>
 
-        <a class="btn btn-info mt-1" href="movie_page.php?id={$movie.id}"
+        <a class="btn btn-info mt-1" href="page_movie_information.php?id={$movie.id}"
            style="background-color:#33cabb ;border-color: #33cabb;">
             Ver mas información
         </a>
