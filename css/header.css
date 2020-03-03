@@ -278,3 +278,22 @@ body {
         display: block;
     }
 }
+
+.logged-user-container{
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.logged-user-alias{
+    float: left;
+    padding-left: 15px;
+}
+
+.btn-logout{
+    float: left;
+    size: 4px;
+}
+
+.worning{
+    margin-bottom: 5px;
+}

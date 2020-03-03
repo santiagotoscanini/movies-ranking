@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="lib/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="lib/bootstrap/3.3.7/js/bootstrap.min"></script>
 </head>
-
 <nav class="navbar navbar-default navbar-expand-lg navbar-light" style="padding-left: 0">
     <div class="navbar-header d-flex" style="margin-left: 22px">
         <a class="navbar-brand" href="index.php">
@@ -38,7 +37,6 @@
             </li>
         </ul>
 
-
         <ul class="nav navbar-nav navbar-right ml-auto">
             <li class="nav-item">
                 <form class="navbar-form form-inline">
@@ -50,19 +48,35 @@
                     </div>
                 </form>
             </li>
+            {if (isset($logged_user))}
+                    <a class="logged-user-alias navbar-brand">
+                        <b>{$logged_user.alias}</b>
+                    </a>
+                <div class="logged-user-container">
+                    <a class="btn btn-info mt-1 btn-logout" href="doLogout.php?"
+                       style="background-color:#33cabb ;border-color: #33cabb;">
+                        Logout
+                    </a>
+                </div>
+            {else}
             <li class="nav-item mr-4">
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
-                        <form action="/examples/actions/confirmation.php" method="post">
+                        <form action="doLogin.php" method="POST">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username" required="required">
+                                <input type="text" class="form-control" placeholder="Username" required="required"
+                                       name="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" required="required">
+                                <input type="password" class="form-control" placeholder="Password" required="required"
+                                       name="pass">
                             </div>
-                            <input type="submit" class="btn btn-primary btn-block" value="Login">
-                        </form>
+                            {if ($err == 1)}
+                                <small class="text-muted worning">Incorrect data</small>
+                            {/if}
+                    <input type="submit" class="btn btn-primary btn-block" value="Login">
+                    </form>
                     </li>
                 </ul>
             </li>
@@ -88,6 +102,8 @@
                     </li>
                 </ul>
             </li>
+            {/if}
+
         </ul>
 
     </div>

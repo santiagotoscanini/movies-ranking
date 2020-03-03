@@ -54,6 +54,9 @@ function areValidCredentials($email, $pass)
             array('email', $email, 'string'),
             array('pass', $pass, 'string')
         ));
+    if ($cn->rowCount() == 0){
+        return null;
+    }
     return $cn->fetchAssoc();
 }
 

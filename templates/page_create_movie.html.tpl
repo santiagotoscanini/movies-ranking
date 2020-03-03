@@ -2,6 +2,8 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Movie register</title>
+
     <link rel="stylesheet" href="lib/font-awesome/4.7.0/font-awesome.min">
     <link rel="stylesheet" href="lib/bootstrap/4.4.1/css/bootstrap.min">
 
@@ -11,11 +13,12 @@
 </head>
 
 <body>
+{include file="header.html.tpl" genres=$genres}
 
 <div class="movie-form">
 
     <h1>
-        Registro de pelicula
+        Movie register
     </h1>
 
     <form class="fields">
@@ -35,7 +38,7 @@
         </div>
         <div class="form-group">
             <label for="comment">Description:</label>
-            <textarea class="form-control" rows="5" id="description" placeholder="Resume..."></textarea>
+            <textarea class="form-control" rows="5" id="description"></textarea>
         </div>
 
         <div class="form-row">
@@ -65,7 +68,7 @@
             </form>
         </div>
 
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary btn-save">Save</button>
     </form>
 
 </div>
