@@ -13,8 +13,8 @@
 </head>
 
 <body>
-{include file="header.html.tpl" genres=$genres}
-
+{include file="header.html.tpl" genres=$genres site=$site}
+{if isset($logged_user) && ($logged_user.es_administrador==1)}
 <div class="movie-form">
 
     <h1>
@@ -72,6 +72,7 @@
     </form>
 
 </div>
-
-
+{else}
+    error
+{/if}
 </body>

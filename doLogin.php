@@ -5,13 +5,13 @@ require_once "auxiliar_files/db_operations.php";
 
 $email = $_POST["email"];
 $pass = $_POST["pass"];
-
+$site = $_GET["site"];
 $logged_user = areValidCredentials($email, $pass);
 
 if (isset($logged_user)) {
     session_start();
     $_SESSION["logged_user"] = $logged_user;
-    header('location:index.php');
+    header('location:' . $site . '.php');
 } else {
-    header('location:index.php?err=1');
+    header('location:' . $site . '.php?err=1');
 }

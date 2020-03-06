@@ -19,8 +19,9 @@
             Movies<b>SSTT</b>
         </a>
     </div>
-    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-        <ul class="nav navbar-nav">
+    <p id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+    <ul class="nav navbar-nav">
+        {if isset($initial_page)}
             <li class="nav-item dropdown">
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Generos</a>
                 <ul class="dropdown-menu">
@@ -29,15 +30,19 @@
                     {/foreach}
                 </ul>
             </li>
+        {/if}
+        {if (isset($logged_user))}
             <li class="nav-item active">
                 <a href="#" class="nav-link">Comentarios</a>
             </li>
             <li class="nav-item">
                 <a href="page_create_movie.php" class="nav-link">Nueva pelicula</a>
             </li>
-        </ul>
+        {/if}
+    </ul>
 
-        <ul class="nav navbar-nav navbar-right ml-auto">
+    <ul style="margin-right: 7px" class="nav navbar-nav navbar-right ml-auto">
+        {if isset($initial_page)}
             <li class="nav-item">
                 <form class="navbar-form form-inline">
                     <div class="input-group search-box">
@@ -48,40 +53,46 @@
                     </div>
                 </form>
             </li>
-            {if (isset($logged_user))}
-                    <a class="logged-user-alias navbar-brand">
-                        <b>{$logged_user.alias}</b>
-                    </a>
-                <div class="logged-user-container">
-                    <a class="btn btn-info mt-1 btn-logout" href="doLogout.php?"
-                       style="background-color:#33cabb ;border-color: #33cabb;">
-                        Logout
-                    </a>
-                </div>
-            {else}
+        {/if}
+        <li>
+            {if isset($err)}
+                <p style="margin-top:15px; margin-right: 10px" class="text-danger align-self-center">
+                    Error, datos incorrectos
+                </p>
+            {/if}
+        </li>
+        {if (isset($logged_user))}
+            <a style="margin-left:25px" class="logged-user-alias navbar-brand">
+                <b>Bienvenido, {$logged_user.alias}!</b>
+            </a>
+            <div class="logged-user-container">
+                <a href="doLogout.php?site={$site}"
+                   class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Logout</a>
+                <ul class="dropdown-menu form-wrapper">
+            </div>
+        {else}
             <li class="nav-item mr-4">
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
-                        <form action="doLogin.php" method="POST">
+                        <form action="doLogin.php?site={$site}" method="POST">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Username" required="required"
                                        name="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" required="required"
+                                <input type="password" class="form-control" placeholder="Password"
+                                       required="required"
                                        name="pass">
                             </div>
-                            {if ($err == 1)}
-                                <small class="text-muted worning">Incorrect data</small>
-                            {/if}
-                    <input type="submit" class="btn btn-primary btn-block" value="Login">
-                    </form>
+                            <input type="submit" class="btn btn-primary btn-block" value="Login">
+                        </form>
                     </li>
                 </ul>
             </li>
             <li class="nav-item mt-2">
-                <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign
+                <a href="#" data-toggle="dropdown"
+                   class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign
                     up</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
@@ -102,9 +113,9 @@
                     </li>
                 </ul>
             </li>
-            {/if}
+        {/if}
 
-        </ul>
+    </ul>
 
     </div>
 </nav>
