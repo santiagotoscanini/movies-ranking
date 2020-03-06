@@ -26,14 +26,15 @@
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Generos</a>
                 <ul class="dropdown-menu">
                     {foreach from=$genres item=genre}
-                        <li><a href="#" class="dropdown-item">{$genre.nombre}</a></li>
+                        <li><a href="#" class="dropdown-item genre-selected" catId="{$genre.id}">{$genre.nombre}</a>
+                        </li>
                     {/foreach}
                 </ul>
             </li>
         {/if}
         {if (isset($logged_user))}
             <li class="nav-item active">
-                <a href="#" class="nav-link">Comentarios</a>
+                <a href="page_comments_request.php" class="nav-link">Comentarios</a>
             </li>
             <li class="nav-item">
                 <a href="page_create_movie.php" class="nav-link">Nueva pelicula</a>
@@ -44,14 +45,14 @@
     <ul style="margin-right: 7px" class="nav navbar-nav navbar-right ml-auto">
         {if isset($initial_page)}
             <li class="nav-item">
-                <form class="navbar-form form-inline">
+                <div class="navbar-form form-inline">
                     <div class="input-group search-box">
-                        <input type="text" id="search" class="form-control" placeholder="Nombre de película..."/>
+                        <input type="text" class="form-control search-movie" placeholder="Movie name..."/>
                         <span class="input-group-addon">
                     <i class="material-icons">&#xE8B6;</i>
                 </span>
                     </div>
-                </form>
+                </div>
             </li>
         {/if}
         <li>
@@ -66,7 +67,7 @@
                 <b>Bienvenido, {$logged_user.alias}!</b>
             </a>
             <div class="logged-user-container">
-                <a href="doLogout.php?site={$site}"
+                <a href="logout .php?site={$site}"
                    class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Logout</a>
                 <ul class="dropdown-menu form-wrapper">
             </div>
@@ -75,7 +76,7 @@
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
-                        <form action="doLogin.php?site={$site}" method="POST">
+                        <form action="login.php?site={$site}" method="POST">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Username" required="required"
                                        name="email">

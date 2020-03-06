@@ -15,32 +15,16 @@
     <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
     <link rel="stylesheet" href="lib/bootstrap/4.4.1/css/bootstrap.min">
 
+    <script type="text/javascript" src="js/initial_page.js"></script>
+    <script type="text/javascript" src="js/movies_container.js"></script>
+
     <script type="text/javascript" src="lib/bootstrap/4.4.1/js/bootstrap.min"></script>
 </head>
 
 <body>
 {include file="header.html.tpl" genres=$genres site=$site}
 
-<div class="cards-container">
-    {foreach from=$movies item=movie}
-        {include file="movie_card.html.tpl" movie=$movie}
-    {/foreach}
-</div>
-
-<div class="buttons-container">
-    <button type="button" class="btn btn-outline-info nav-button" id="start-button">
-        <<-
-    </button>
-    <button type="button" class="btn btn-outline-info nav-button" id="back-button">
-        <-
-    </button>
-    <button type="button" class="btn btn-outline-info nav-button" id="next-button">
-        ->
-    </button>
-    <button type="button" class="btn btn-outline-info nav-button" id="end-button">
-        ->>
-    </button>
-</div>
+<div id="movies"></div>
 
 </body>
 </html>

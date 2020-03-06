@@ -6,24 +6,19 @@ require_once("auxiliar_files/smarty.php");
 
 $smarty = getSmarty();
 
-if (isset($_GET["catId"])) {
-    $catId = $_GET["catId"];
-}
-
 session_start();
+
 $logged_user = null;
-if (isset($_SESSION["logged_user"])){
+if (isset($_SESSION["logged_user"])) {
     $logged_user = $_SESSION["logged_user"];
 }
-$smarty -> assign("logged_user", $logged_user);
 $err = null;
 if (isset($_GET["err"])) {
     $err = $_GET["err"];
 }
-$smarty -> assign("err", $err);
-
-$smarty -> assign("movies", getMovies());
-$smarty -> assign("genres", getGenres());
-$smarty -> assign("site", "index");
-$smarty -> assign("initial_page", true);
+$smarty->assign("err", $err);
+$smarty->assign("logged_user", $logged_user);
+$smarty->assign("genres", getGenres());
+$smarty->assign("site", "index");
+$smarty->assign("initial_page", true);
 $smarty->display("page_initial.html.tpl");

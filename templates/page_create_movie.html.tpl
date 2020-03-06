@@ -15,63 +15,63 @@
 <body>
 {include file="header.html.tpl" genres=$genres site=$site}
 {if isset($logged_user) && ($logged_user.es_administrador==1)}
-<div class="movie-form">
+    <div class="movie-form">
 
-    <h1>
-        Movie register
-    </h1>
+        <h1>
+            Movie register
+        </h1>
 
-    <form class="fields">
+        <form class="fields">
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Name of the movie</label>
-                <input class="form-control" placeholder="Movie name">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputState">Movie genre</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="comment">Description:</label>
-            <textarea class="form-control" rows="5" id="description"></textarea>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Director</label>
-                <input class="form-control" placeholder="Name">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Cast</label>
-                <small class="text-muted">(put the names separated by commas)</small>
-                <input class="form-control" placeholder="Name1, Name2, ...">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Link to the movie trailer</label>
-                <input type="text" class="form-control" placeholder="Link here">
-            </div>
-            <form>
-                <div class="form-group form-group-input">
-                    <label>Movie Poster</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Name of the movie</label>
+                    <input class="form-control" placeholder="Movie name">
                 </div>
-            </form>
-        </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Movie genre</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="comment">Description:</label>
+                <textarea class="form-control" rows="5" id="description"></textarea>
+            </div>
 
-        <button type="submit" class="btn btn-primary btn-save">Save</button>
-    </form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Director</label>
+                    <input class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Cast</label>
+                    <small class="text-muted">(put the names separated by commas)</small>
+                    <input class="form-control" placeholder="Name1, Name2, ...">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Link to the movie trailer</label>
+                    <input type="text" class="form-control" placeholder="Link here">
+                </div>
+                <form>
+                    <div class="form-group form-group-input">
+                        <label>Movie Poster</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-</div>
+            <button type="submit" class="btn btn-primary btn-save">Save</button>
+        </form>
+
+    </div>
 {else}
     error
 {/if}
