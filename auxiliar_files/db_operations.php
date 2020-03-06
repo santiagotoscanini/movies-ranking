@@ -122,39 +122,33 @@ function areValidCredentials($email, $pass)
     return $cn->fetchAssoc();
 }
 
-function getMovieFilteredByGenre($genre)
+function getApprovedComments($movieId,$page)
 {
+    $elemCant = 5;
+    $offset = ($page - 1) * $elemCant;
+
     $cn = connectDB();
     $cn->query(
-        'SELECT * FROM movies WHERE id_genero=:genre ',
-        array(
-            array('genre', $genre, 'int')
-        ));
-    return $cn->fetchAll();
-}
-
-
-/*function getComments($id)
-{
-    $cn = connectDB();
-    $cn->query(
-        'SELECT comentarios.mensaje,comentarios.puntuacion,usuarios.alias '
-        . 'FROM comentarios,usuarios '
-        . 'WHERE comentarios.id_pelicula = :id AND '
-        . 'usuarios.id = comentarios.id AND '
-        . 'comentarios.estado = 'APROBADO'',
-    array(
-        array("id", $id, 'int')
+        "SELECT comentarios.mensaje, comentarios.puntuacion, usuarios.alias
+        FROM comentarios, usuarios
+        WHERE comentarios.id_pelicula = :id AND
+        usuarios.id = comentarios.id_usuario AND
+        comentarios.estado = 'APROBADO'
+        LIMIT :offset, :tamano",
+    array(array("offset", $offset, 'int'),
+        array("tamano", $elemCant, 'int'),
+        array("id", $movieId, 'int')
     ));
     return $cn->fetchAll();
-}*/
+}
 
 function getPendingComments()
 {
     $cn = connectDB();
     $cn->query("SELECT comentarios.*, peliculas.titulo, usuarios.alias
             FROM peliculas, comentarios, usuarios
-            WHERE comentarios.estado = 'PENDIENTE' AND peliculas.id = comentarios.id_pelicula AND usuarios.id = comentarios.id_usuario");
+            WHERE comentarios.estado = 'PENDIENTE' AND peliculas.id = comentarios.id_pelicula 
+                AND usuarios.id = comentarios.id_usuario");
     return $cn->fetchAll();
 }
 

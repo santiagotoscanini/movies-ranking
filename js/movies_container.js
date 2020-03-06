@@ -33,7 +33,6 @@ $(document).ready(function () {
 
     $(".genre-selected").click(function () {
         cat = $(this).attr("catId");
-        alert(cat);
         load();
     });
 

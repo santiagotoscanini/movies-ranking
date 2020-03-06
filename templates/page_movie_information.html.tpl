@@ -13,13 +13,16 @@
 
     <script type="text/javascript" src="lib/bootstrap/4.4.1/js/bootstrap.min"></script>
     <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
+
+    <script type="text/javascript" src="js/approved_comments_container.js"></script>
 </head>
 <body>
-{include file="header.html.tpl" genres=$genres site=$site}
+{*{include file="header.html.tpl" genres=$genres site=$site}*}
 <div class="cards-container">
     <div class="card flex-row flex-wrap body row" style="margin:22px 22px 0px 22px;border-radius: 0px 25px 25px 0px;">
         <div class="align-self-center"><img src="img/hp.jpg" height="300" alt=""></div>
         <div class="pl-5 pt-4 pb-4 col-10">
+            <input type="hidden" id="movie-id" value={$movie.id}>
             <h4 class="card-title">{$movie.titulo}</h4>
             <p class="card-text"><b>Genero:</b> {$movie.nombre}</p>
             <p class="card-text"><b>Puntuación:</b> {$movie.puntuacion}</p>
@@ -37,5 +40,6 @@
             </video>
         </div>
     </div>
+    <div id="a_comments"></div>
 </div>
 </body>
