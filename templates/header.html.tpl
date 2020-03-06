@@ -25,12 +25,12 @@
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Generos</a>
                 <ul class="dropdown-menu">
                     {foreach from=$genres item=genre}
-                        <li><a href="#" class="dropdown-item">{$genre.nombre}</a></li>
+                        <li><a href="#" class="dropdown-item genre-selected" catId = "{$genre.id}">{$genre.nombre}</a></li>
                     {/foreach}
                 </ul>
             </li>
             <li class="nav-item active">
-                <a href="#" class="nav-link">Comentarios</a>
+                <a href="page_comments_request.php" class="nav-link">Comentarios</a>
             </li>
             <li class="nav-item">
                 <a href="page_create_movie.php" class="nav-link">Nueva pelicula</a>
@@ -39,21 +39,21 @@
 
         <ul class="nav navbar-nav navbar-right ml-auto">
             <li class="nav-item">
-                <form class="navbar-form form-inline">
+                <div class="navbar-form form-inline">
                     <div class="input-group search-box">
-                        <input type="text" id="search" class="form-control" placeholder="Nombre de película..."/>
+                        <input type="text" class="form-control search-movie" placeholder="Movie name..."/>
                         <span class="input-group-addon">
                     <i class="material-icons">&#xE8B6;</i>
                 </span>
                     </div>
-                </form>
+                </div>
             </li>
             {if (isset($logged_user))}
                     <a class="logged-user-alias navbar-brand">
                         <b>{$logged_user.alias}</b>
                     </a>
                 <div class="logged-user-container">
-                    <a class="btn btn-info mt-1 btn-logout" href="doLogout.php?"
+                    <a class="btn btn-info mt-1 btn-logout" href="logout.php?"
                        style="background-color:#33cabb ;border-color: #33cabb;">
                         Logout
                     </a>
@@ -63,7 +63,7 @@
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
-                        <form action="doLogin.php" method="POST">
+                        <form action="login.php" method="POST">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Username" required="required"
                                        name="email">

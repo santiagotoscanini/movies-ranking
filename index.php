@@ -13,10 +13,6 @@ if (isset($_SESSION["logged_user"])){
     $logged_user = $_SESSION["logged_user"];
 }
 
-if (isset($_GET["catId"])) {
-    $catId = $_GET["catId"];
-}
-
 $err = 0;
 if (isset($_GET["err"])) {
     $err = $_GET["err"];
@@ -24,6 +20,5 @@ if (isset($_GET["err"])) {
 
 $smarty -> assign("err", $err);
 $smarty -> assign("logged_user", $logged_user);
-$smarty -> assign("movies", getMovies());
 $smarty -> assign("genres", getGenres());
 $smarty->display("page_initial.html.tpl");
