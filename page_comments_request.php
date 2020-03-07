@@ -16,6 +16,7 @@ if (isset($_GET["err"])) {
     $err = $_GET["err"];
 }
 
+$smarty->assign("site", "page_comments_request");
 $smarty->assign("logged_user", $logged_user);
 $smarty->assign("err", $err);
 $smarty->assign("genres", getGenres());
