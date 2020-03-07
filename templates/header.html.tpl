@@ -33,6 +33,7 @@
             </li>
         {/if}
         {if (isset($logged_user))}
+            <!-- TODO: falta verificar que sea admin-->
             <li class="nav-item active">
                 <a href="page_comments_request.php" class="nav-link">Comentarios</a>
             </li>
@@ -67,8 +68,13 @@
                 <b>Bienvenido, {$logged_user.alias}!</b>
             </a>
             <div class="logged-user-container">
-                <a href="logout .php?site={$site}"
-                   class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Logout</a>
+                {if isset($getvariable)}
+                    <a href="logout.php?site={$site}&getvariable={$getvariable}"
+                       class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Logout</a>
+                {else}
+                    <a href="logout.php?site={$site}"
+                       class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Logout</a>
+                {/if}
                 <ul class="dropdown-menu form-wrapper">
             </div>
         {else}
@@ -76,18 +82,33 @@
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
-                        <form action="login.php?site={$site}" method="POST">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username" required="required"
-                                       name="email">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password"
-                                       required="required"
-                                       name="pass">
-                            </div>
-                            <input type="submit" class="btn btn-primary btn-block" value="Login">
-                        </form>
+                        {if isset($getvariable)}
+                            <form action="login.php?getvariable={$getvariable}&site={$site}" method="POST">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Username" required="required"
+                                           name="email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password"
+                                           required="required"
+                                           name="pass">
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-block" value="Login">
+                            </form>
+                        {else}
+                            <form action="login.php?site={$site}" method="POST">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Username" required="required"
+                                           name="email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password"
+                                           required="required"
+                                           name="pass">
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-block" value="Login">
+                            </form>
+                        {/if}
                     </li>
                 </ul>
             </li>

@@ -17,7 +17,8 @@
     <script type="text/javascript" src="js/approved_comments_container.js"></script>
 </head>
 <body>
-{*{include file="header.html.tpl" genres=$genres site=$site}*}
+{include file="header.html.tpl" genres=$genres site=$site getvariable=$getvariable}
+
 <div class="cards-container">
     <div class="card flex-row flex-wrap body row" style="margin:22px 22px 0px 22px;border-radius: 0px 25px 25px 0px;">
         <div class="align-self-center"><img src="img/hp.jpg" height="300" alt=""></div>
@@ -40,6 +41,8 @@
             </video>
         </div>
     </div>
+
+    {include file="movie_new_comment.html.tpl" }
     <div id="a_comments"></div>
 </div>
 </body>

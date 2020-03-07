@@ -162,3 +162,20 @@ function setCommentToApprovedOrRejected($id, $status){
         )
     );
 }
+
+function getCommentFromUser($movie_id, $logged_user){
+
+    if(isset($logged_user)){
+        $cn = connectDB();
+        $cn->query("SELECT *
+                FROM comentarios
+                WHERE comentarios.id_pelicula = :movie_id
+                AND comentarios.id_usuario = :user_id",
+            array(
+                array("movie_id",$movie_id,"int"),
+                array("user_id", $logged_user["id"], "int")
+            )
+        );
+        return $cn->fetchAssoc();
+    }
+}
