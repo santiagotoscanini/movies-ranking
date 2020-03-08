@@ -235,12 +235,12 @@ function setNewComment($new_comment, $logged_user, $movie_id, $points)
 {
     $cn = connectDB();
     $cn->query("INSERT INTO comentarios(id, id_pelicula, mensaje, puntuacion, id_usuario, estado) 
-                VALUES (NULL, :movie_id, :new_comment, :points, :logged_user_id, 'PENDIENTE');",
+                VALUES (NULL, :movie_id, :new_comment, :points, :logged_user_id, 'PENDIENTE')",
         array(
             array("movie_id", $movie_id, "int"),
             array("new_comment", $new_comment, "string"),
             array("points", $points, "float"),
-            array("user_id", $logged_user["id"], "int")
+            array("logged_  user_id", $logged_user["id"], "int")
         )
     );
 }
