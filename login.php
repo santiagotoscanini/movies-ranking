@@ -11,10 +11,10 @@ $getvariable = $_GET["getvariable"];
 
 $base_site_name = 'location:' . $site . '.php?';
 $movie_id = 'id=' . $getvariable;
-$error_id = "&err=1";
+$error_id = "err=1";
 
 $site_name = $base_site_name;
-if (isset($getvariable)) $base_site_name = $base_site_name . $movie_id;
+if (isset($getvariable)) $base_site_name = $base_site_name . $movie_id . '&';
 
 if (isset($logged_user)) {
     session_start();

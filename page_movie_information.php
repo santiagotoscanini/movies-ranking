@@ -23,4 +23,11 @@ $smarty->assign("genres", getGenres());
 $smarty->assign("user_comment", getCommentFromUserInMovie($movie_id, $logged_user));
 $smarty->assign("site", "page_movie_information");
 
+$cast_array = getCast($movie_id);
+$cast_to_string = "";
+foreach ($cast_array as $actor) {
+    $cast_to_string = $cast_to_string . ", " . $actor["nombre"];
+}
+if (strlen($cast_to_string) > 0) $cast_to_string = substr($cast_to_string, 2);
+$smarty->assign("cast", $cast_to_string);
 $smarty->display("page_movie_information.html.tpl");

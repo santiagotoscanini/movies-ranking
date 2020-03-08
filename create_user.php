@@ -9,17 +9,17 @@ $pass = $_POST["pass"];
 $site = $_GET["site"];
 $getvariable = $_GET["getvariable"];
 
-$userAlreadyExist = createUser($user, $pass, $email);
+$base_site_name = 'location:' . $site . '.php?';
+$movie_id = 'id=' . $getvariable;
+$error_id = "err=2";
+$site_name = $base_site_name;
+if (isset($getvariable)) $base_site_name = $base_site_name . $movie_id . '&';
 
-$base_site_name = 'location:' . $site . '.php';
+$userAlreadyExist = existUserWithEmail($email);
+
 if ($userAlreadyExist) {
-    if (isset($getvariable))
-        header($base_site_name . '?err=2&id=' . $getvariable);
-    else
-        header($base_site_name . '?err=2');
+    header($base_site_name . $error_id);
 } else {
-    if (isset($getvariable))
-        header($base_site_name . '?id=' . $getvariable);
-    else
-        header($base_site_name);
+    createUser($email, $user, $pass);
+    header($base_site_name . "err=4");
 }

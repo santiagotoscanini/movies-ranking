@@ -20,7 +20,7 @@
         </a>
     </div>
     <ul class="nav navbar-nav navbar-left mr-auto">
-        {if (isset($logged_user))}
+        {if (isset($logged_user)) && $logged_user["es_administrador"]==1}
             <!-- TODO: falta verificar que sea admin-->
             <li class="nav-item active">
                 <a href="page_comments_request.php" class="nav-link">Comentarios</a>
@@ -59,12 +59,32 @@
         {/if}
 
         {if isset($err)}
-            <!-- TODO: falta verificar que el error sea 1 o 2 para ver si los datos estan mal al loggear o ya existe usuario al registrar-->
-            <li>
-                <p style="margin-top:15px; margin-right: 10px" class="text-danger align-self-center">
-                    Error, datos incorrectos
-                </p>
-            </li>
+            <!-- TODO: falta verificar que el error sea 1,2 o 3 para ver si los datos estan mal al loggear,ya existe usuario al registrar o la contraseña es de menos de 6 caracteres-->
+            {if $err==1}
+                <li>
+                    <p style="margin-top:15px; margin-right: 10px" class="text-danger align-self-center">
+                        Error, datos incorrectos
+                    </p>
+                </li>
+            {elseif $err==2}
+                <li>
+                    <p style="margin-top:15px; margin-right: 10px" class="text-danger align-self-center">
+                        Error, usuario ya registrado
+                    </p>
+                </li>
+            {elseif $err==3}
+                <li>
+                    <p style="margin-top:15px; margin-right: 10px" class="text-danger align-self-center">
+                        Error, contraseña menor a 6 caracteres
+                    </p>
+                </li>
+            {elseif $err==4}
+                <li>
+                    <p style="margin-top:15px; margin-right: 10px" class="text-success align-self-center">
+                        Cuenta creada exitosamente
+                    </p>
+                </li>
+            {/if}
         {/if}
 
         {if (isset($logged_user))}
@@ -122,20 +142,41 @@
                     up</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
-                        <form action="/examples/actions/confirmation.php" method="post">
-                            <p class="hint-text">Completa los campos para registrarte!</p>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Correo" required="required">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Usuario" required="required">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Contraseña"
-                                       required="required">
-                            </div>
-                            <input type="submit" class="btn btn-primary btn-block" value="Sign up">
-                        </form>
+                        {if isset($getvariable)}
+                            <form action="create_user.php?site={$site}&getvariable={$getvariable}" method="post">
+                                <p class="hint-text">Completa los campos para registrarte!</p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Correo" required="required"
+                                           name="email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Usuario" required="required"
+                                           name="user">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Contraseña"
+                                           required="required" name="pass">
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+                            </form>
+                        {else}
+                            <form action="create_user.php?site={$site}" method="post">
+                                <p class="hint-text">Completa los campos para registrarte!</p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Correo" required="required"
+                                           name="email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Usuario" required="required"
+                                           name="user">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Contraseña"
+                                           required="required" name="pass">
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+                            </form>
+                        {/if}
                     </li>
                 </ul>
             </li>

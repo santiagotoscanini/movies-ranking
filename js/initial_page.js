@@ -5,4 +5,3 @@ autofitIframe = (id) => {
         id.style.height = id.contentDocument.body.scrollHeight + "px";
     }
 }
-

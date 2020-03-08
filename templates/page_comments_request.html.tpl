@@ -5,10 +5,10 @@
     <title>Comments request</title>
 
     <link rel="stylesheet" href="lib/font-awesome/4.7.0/font-awesome.min">
+    <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
     <link rel="stylesheet" href="lib/bootstrap/4.4.1/css/bootstrap.min">
 
     <script type="text/javascript" src="lib/bootstrap/4.4.1/js/bootstrap.min"></script>
-    <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
     <link rel="stylesheet" href="css/form.css"/>
 </head>
 
@@ -22,7 +22,7 @@
         </h1>
 
         <div class="comments-container">
-            {if (isset($pending_comments))}
+            {if (isset($pending_comments)) && isset($pending_comments["id"])}
                 {foreach from=$pending_comments item=comment}
                     {include file="movie_comment_request.html.tpl" movie=$comment}
                 {/foreach}

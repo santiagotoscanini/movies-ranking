@@ -16,6 +16,7 @@
             {else}
                 <h4 class="card-title">Add your comment:</h4>
                 <div style="margin-bottom: 30px;">
+                    <-- TODO: cambiar esto a un combobox de 1 a 5 -->
                     <h6 class="card-subtitle mb-2 text-muted" style="float: right; margin-left: 10px;">Points:
                         <input class="form-control" placeholder="">
                     </h6>
