@@ -295,7 +295,7 @@ function setNewComment($new_comment, $logged_user, $movie_id, $points)
             array("movie_id", $movie_id, "int"),
             array("new_comment", $new_comment, "string"),
             array("points", $points, "float"),
-            array("logged_  user_id", $logged_user["id"], "int")
+            array("logged_user_id", $logged_user["id"], "int")
         )
     );
 }
