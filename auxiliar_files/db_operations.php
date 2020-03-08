@@ -23,20 +23,20 @@ function getGenres()
     return $cn->fetchAll();
 }
 
-function cantOfMoviePages($idCat=0, $filtro="") {
+function cantOfMoviePages($idCat = 0, $filtro = "")
+{
     $filtro = '%' . $filtro . '%';
     $elemCant = 6;
 
     $cn = connectDB();
 
-    if($idCat == 0){
+    if ($idCat == 0) {
         $cn->query(
             'SELECT count(*) as total FROM peliculas
             WHERE peliculas.titulo LIKE :filtro ', array(
             array("filtro", $filtro, 'string')
         ));
-    }
-    else{
+    } else {
         $cn->query(
             'SELECT count(*) as total FROM peliculas
             WHERE pelicula.id_genero = :id AND peliculas.titulo LIKE :filtro ', array(
@@ -54,17 +54,18 @@ function cantOfMoviePages($idCat=0, $filtro="") {
     return $pag;
 }
 
-function getMovies($idCat, $pag, $filtro = "") {
+function getMovies($idCat, $pag, $filtro = "")
+{
     $elemCant = 6;
     $offset = ($pag - 1) * $elemCant;
-    if($filtro == '' || $filtro == "" || $filtro == " "){
+    if ($filtro == '' || $filtro == "" || $filtro == " ") {
         $filtro = '%';
-    }else{
+    } else {
         $filtro = '%' . $filtro . '%';
     }
 
     $cn = connectDB();
-    if($idCat == 0){
+    if ($idCat == 0) {
         $cn->query(
             'SELECT peliculas.titulo, peliculas.resumen, peliculas.id, peliculas.puntuacion, generos.nombre 
             FROM peliculas, generos
@@ -75,8 +76,7 @@ function getMovies($idCat, $pag, $filtro = "") {
             array("tamano", $elemCant, 'int'),
             array("filtro", $filtro, 'string')
         ));
-    }
-    else{
+    } else {
         $cn->query(
             'SELECT peliculas.titulo, peliculas.resumen, peliculas.id, peliculas.puntuacion, generos.nombre 
             FROM peliculas, generos
@@ -116,13 +116,13 @@ function areValidCredentials($email, $pass)
             array('email', $email, 'string'),
             array('pass', $pass, 'string')
         ));
-    if ($cn->rowCount() == 0){
+    if ($cn->rowCount() == 0) {
         return null;
     }
     return $cn->fetchAssoc();
 }
 
-function getApprovedComments($movieId,$page)
+function getApprovedComments($movieId, $page)
 {
     $elemCant = 5;
     $offset = ($page - 1) * $elemCant;
@@ -135,10 +135,10 @@ function getApprovedComments($movieId,$page)
         usuarios.id = comentarios.id_usuario AND
         comentarios.estado = 'APROBADO'
         LIMIT :offset, :tamano",
-    array(array("offset", $offset, 'int'),
-        array("tamano", $elemCant, 'int'),
-        array("id", $movieId, 'int')
-    ));
+        array(array("offset", $offset, 'int'),
+            array("tamano", $elemCant, 'int'),
+            array("id", $movieId, 'int')
+        ));
     return $cn->fetchAll();
 }
 
@@ -152,30 +152,44 @@ function getPendingComments()
     return $cn->fetchAll();
 }
 
-function setCommentToApprovedOrRejected($id, $status){
+function setCommentToApprovedOrRejected($id, $status)
+{
 
     $cn = connectDB();
     $cn->query('UPDATE comentarios SET estado = :status WHERE id = :id',
         array(
-            array("status",$status,"string"),
-            array("id",$id,"int")
+            array("status", $status, "string"),
+            array("id", $id, "int")
         )
     );
 }
 
 function getCommentFromUserInMovie($movie_id, $logged_user){
-
-    if(isset($logged_user)){
+    if (isset($logged_user)) {
         $cn = connectDB();
         $cn->query("SELECT *
                 FROM comentarios
                 WHERE comentarios.id_pelicula = :movie_id
                 AND comentarios.id_usuario = :user_id",
             array(
-                array("movie_id",$movie_id,"int"),
+                array("movie_id", $movie_id, "int"),
                 array("user_id", $logged_user["id"], "int")
             )
         );
         return $cn->fetchAssoc();
     }
+}
+
+function setNewComment($new_comment, $logged_user, $movie_id, $points)
+{
+    $cn = connectDB();
+    $cn->query("INSERT INTO comentarios(id, id_pelicula, mensaje, puntuacion, id_usuario, estado) 
+                VALUES (NULL, :movie_id, :new_comment, :points, :logged_user_id, 'PENDIENTE');",
+        array(
+            array("movie_id", $movie_id, "int"),
+            array("new_comment", $new_comment, "string"),
+            array("points", $points, "float"),
+            array("user_id", $logged_user["id"], "int")
+        )
+    );
 }

@@ -7,9 +7,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-
-    <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
     <link rel="stylesheet" href="lib/font-awesome/4.7.0/font-awesome.min"/>
+    <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
     <link rel="stylesheet" href="lib/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="lib/bootstrap/3.3.7/js/bootstrap.min"></script>
 </head>

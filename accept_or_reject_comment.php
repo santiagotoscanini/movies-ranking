@@ -8,7 +8,6 @@ $status = 'RECHAZADO';
 if(isset($_GET["status"])){
     $status = $_GET["status"];
 }
-print_r($status);
 
 $id = null;
 if(isset($_GET["id"])){
