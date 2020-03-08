@@ -25,8 +25,16 @@
                     <input type="hidden" name="movie_id" value={$movie.id}>
                     <h4 class="card-title">Add your comment:</h4>
                     <div style="margin-bottom: 30px;">
-                        <h6 class="card-subtitle mb-2 text-muted" style="float: right; margin-left: 10px;">Points:
-                            <input class="form-control" placeholder="" type="number" name="points" required>
+                        <h6 class="card-subtitle mb-2 text-muted" style="float: right; margin-left: 10px;">
+                            <label for="exampleFormControlSelect1">Points:</label>
+                            <select required class="form-control" id="points" name="points">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                         </h6>
                     </div>
                     <div class="card-body"
@@ -34,9 +42,7 @@
                         <input class="form-control" placeholder="Comment..." type="text" name="comment" required>
                     </div>
                     <div style="float: right">
-{*                        <a href="#" class="card-link" type="submit"*}
-{*                           id="accept">Accept</a>*}
-                        <input value="Enviar" type="submit"><br>
+                        <input value="Accept" type="submit"><br>
                     </div>
                 </form>
             {/if}
