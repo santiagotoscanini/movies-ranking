@@ -121,6 +121,29 @@ function areValidCredentials($email, $pass)
     return $cn->fetchAssoc();
 }
 
+function cantOfApprovedCommentsPages($movieId)
+{
+    $elemCant = 5;
+
+    $cn = connectDB();
+
+    $cn->query(
+        "SELECT count(*) as total FROM comentarios
+            WHERE comentarios.id_pelicula = :id AND
+            comentarios.estado = 'APROBADO'", array(
+            array("id", $movieId, 'int')
+        )
+    );
+
+    $row = $cn->fetchAssoc();
+    $total = $row["total"];
+    $pag = ceil($total / $elemCant);
+    if ($pag == 0) {
+        $pag = 1;
+    };
+    return $pag;
+}
+
 function getApprovedComments($movieId, $page)
 {
     $elemCant = 5;
@@ -141,13 +164,39 @@ function getApprovedComments($movieId, $page)
     return $cn->fetchAll();
 }
 
-function getPendingComments()
+function cantOfPendingCommentsPages()
 {
+    $elemCant = 5;
+
+    $cn = connectDB();
+
+    $cn->query(
+        "SELECT count(*) as total FROM comentarios
+            WHERE comentarios.estado = 'PENDIENTE'"
+    );
+
+    $row = $cn->fetchAssoc();
+    $total = $row["total"];
+    $pag = ceil($total / $elemCant);
+    if ($pag == 0) {
+        $pag = 1;
+    };
+    return $pag;
+}
+
+function getPendingComments($page)
+{
+    $elemCant = 5;
+    $offset = ($page - 1) * $elemCant;
+
     $cn = connectDB();
     $cn->query("SELECT comentarios.*, peliculas.titulo, usuarios.alias
             FROM peliculas, comentarios, usuarios
             WHERE comentarios.estado = 'PENDIENTE' AND peliculas.id = comentarios.id_pelicula 
-                AND usuarios.id = comentarios.id_usuario");
+                AND usuarios.id = comentarios.id_usuario
+                LIMIT :offset, :tamano",
+        array(array("offset", $offset, 'int'),
+            array("tamano", $elemCant, 'int')));
     return $cn->fetchAll();
 }
 
@@ -165,7 +214,6 @@ function setCommentToApprovedOrRejected($id, $status)
 
 function getCommentFromUserInMovie($movie_id, $logged_user)
 {
-
     if (isset($logged_user)) {
         $cn = connectDB();
         $cn->query("SELECT *
@@ -236,4 +284,18 @@ function getCast($movie_id)
         array("movie_id", $movie_id, "string")
     ));
     return $cn->fetchAll();
+}
+
+function setNewComment($new_comment, $logged_user, $movie_id, $points)
+{
+    $cn = connectDB();
+    $cn->query("INSERT INTO comentarios(id, id_pelicula, mensaje, puntuacion, id_usuario, estado) 
+                VALUES (NULL, :movie_id, :new_comment, :points, :logged_user_id, 'PENDIENTE')",
+        array(
+            array("movie_id", $movie_id, "int"),
+            array("new_comment", $new_comment, "string"),
+            array("points", $points, "float"),
+            array("logged_  user_id", $logged_user["id"], "int")
+        )
+    );
 }

@@ -8,6 +8,8 @@
     <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
     <link rel="stylesheet" href="lib/bootstrap/4.4.1/css/bootstrap.min">
 
+    <script type="text/javascript" src="js/pending_comments_container.js"></script>
+
     <script type="text/javascript" src="lib/bootstrap/4.4.1/js/bootstrap.min"></script>
     <link rel="stylesheet" href="css/form.css"/>
 </head>
