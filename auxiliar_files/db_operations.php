@@ -122,6 +122,30 @@ function areValidCredentials($email, $pass)
     return $cn->fetchAssoc();
 }
 
+function cantOfApprovedCommentsPages($movieId)
+{
+    $elemCant = 5;
+
+    $cn = connectDB();
+
+    $cn->query(
+        "SELECT count(*) as total FROM comentarios
+            WHERE comentarios.id_pelicula = :id AND
+            comentarios.estado = 'APROBADO'", array(
+            array("id", $movieId, 'int')
+        )
+    );
+
+    $row = $cn->fetchAssoc();
+    $total = $row["total"];
+    $pag = ceil($total / $elemCant);
+    if ($pag == 0) {
+        $pag = 1;
+    };
+    return $pag;
+}
+
+
 function getApprovedComments($movieId, $page)
 {
     $elemCant = 5;
@@ -140,6 +164,26 @@ function getApprovedComments($movieId, $page)
             array("id", $movieId, 'int')
         ));
     return $cn->fetchAll();
+}
+
+function cantOfPendingCommentsPages()
+{
+    $elemCant = 5;
+
+    $cn = connectDB();
+
+    $cn->query(
+        "SELECT count(*) as total FROM comentarios
+            WHERE comentarios.estado = 'PENDIENTE'"
+    );
+
+    $row = $cn->fetchAssoc();
+    $total = $row["total"];
+    $pag = ceil($total / $elemCant);
+    if ($pag == 0) {
+        $pag = 1;
+    };
+    return $pag;
 }
 
 function getPendingComments($page)
@@ -170,7 +214,8 @@ function setCommentToApprovedOrRejected($id, $status)
     );
 }
 
-function getCommentFromUserInMovie($movie_id, $logged_user){
+function getCommentFromUserInMovie($movie_id, $logged_user)
+{
     if (isset($logged_user)) {
         $cn = connectDB();
         $cn->query("SELECT *

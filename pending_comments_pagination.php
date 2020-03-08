@@ -10,6 +10,6 @@ if (isset($_GET["pag"])) $page = $_GET["pag"];
 $smarty->assign("page", $page);
 
 $smarty->assign("pending_comments", getPendingComments($page));
-$smarty->assign("pages", cantOfMoviePages());
+$smarty->assign("pages", cantOfPendingCommentsPages());
 
 $smarty->display("movie_pending_comments_container.html.tpl");
