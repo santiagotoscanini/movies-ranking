@@ -142,13 +142,19 @@ function getApprovedComments($movieId, $page)
     return $cn->fetchAll();
 }
 
-function getPendingComments()
+function getPendingComments($page)
 {
+    $elemCant = 5;
+    $offset = ($page - 1) * $elemCant;
+
     $cn = connectDB();
     $cn->query("SELECT comentarios.*, peliculas.titulo, usuarios.alias
             FROM peliculas, comentarios, usuarios
             WHERE comentarios.estado = 'PENDIENTE' AND peliculas.id = comentarios.id_pelicula 
-                AND usuarios.id = comentarios.id_usuario");
+                AND usuarios.id = comentarios.id_usuario
+                LIMIT :offset, :tamano",
+        array(array("offset", $offset, 'int'),
+            array("tamano", $elemCant, 'int')));
     return $cn->fetchAll();
 }
 

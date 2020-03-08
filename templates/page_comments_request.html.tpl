@@ -8,6 +8,8 @@
     <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
     <link rel="stylesheet" href="lib/bootstrap/4.4.1/css/bootstrap.min">
 
+    <script type="text/javascript" src="js/pending_comments_container.js"></script>
+
     <script type="text/javascript" src="lib/bootstrap/4.4.1/js/bootstrap.min"></script>
     <link rel="stylesheet" href="css/form.css"/>
 </head>
@@ -21,15 +23,7 @@
             Comments request
         </h1>
 
-        <div class="comments-container">
-            {if (isset($pending_comments))}
-                {foreach from=$pending_comments item=comment}
-                    {include file="movie_comment_request.html.tpl" movie=$comment}
-                {/foreach}
-            {else}
-                <div>No pendding comments</div>
-            {/if}
-        </div>
+        <div id="comments-container"></div>
     </div>
 {else}
     <!-- TODO hacer un componente para mostrar cuando se accede a un lugar prohibido-->
