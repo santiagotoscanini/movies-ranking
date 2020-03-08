@@ -19,8 +19,18 @@
             Movies<b>SSTT</b>
         </a>
     </div>
-    <p id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav navbar-left mr-auto">
+        {if (isset($logged_user))}
+            <!-- TODO: falta verificar que sea admin-->
+            <li class="nav-item active">
+                <a href="page_comments_request.php" class="nav-link">Comentarios</a>
+            </li>
+            <li class="nav-item">
+                <a href="page_create_movie.php" class="nav-link">Nueva pelicula</a>
+            </li>
+        {/if}
+    </ul>
+    <ul class="nav navbar-nav d-flex justify-content-end">
         {if isset($initial_page)}
             <li class="nav-item dropdown">
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Generos</a>
@@ -30,15 +40,6 @@
                         </li>
                     {/foreach}
                 </ul>
-            </li>
-        {/if}
-        {if (isset($logged_user))}
-            <!-- TODO: falta verificar que sea admin-->
-            <li class="nav-item active">
-                <a href="page_comments_request.php" class="nav-link">Comentarios</a>
-            </li>
-            <li class="nav-item">
-                <a href="page_create_movie.php" class="nav-link">Nueva pelicula</a>
             </li>
         {/if}
     </ul>
@@ -56,13 +57,16 @@
                 </div>
             </li>
         {/if}
-        <li>
-            {if isset($err)}
+
+        {if isset($err)}
+            <!-- TODO: falta verificar que el error sea 1 o 2 para ver si los datos estan mal al loggear o ya existe usuario al registrar-->
+            <li>
                 <p style="margin-top:15px; margin-right: 10px" class="text-danger align-self-center">
                     Error, datos incorrectos
                 </p>
-            {/if}
-        </li>
+            </li>
+        {/if}
+
         {if (isset($logged_user))}
             <a style="margin-left:25px" class="logged-user-alias navbar-brand">
                 <b>Bienvenido, {$logged_user.alias}!</b>
@@ -136,8 +140,5 @@
                 </ul>
             </li>
         {/if}
-
     </ul>
-
-    </div>
 </nav>

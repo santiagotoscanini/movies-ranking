@@ -1,29 +1,20 @@
 <?php
 ini_set('display_errors', 1);
-
 require_once("auxiliar_files/db_operations.php");
 require_once("auxiliar_files/smarty.php");
-
 $smarty = getSmarty();
+session_start();
 
 $logged_user = null;
-if (isset($_SESSION["logged_user"])) {
-    $logged_user = $_SESSION["logged_user"];
-}
+if (isset($_SESSION["logged_user"])) $logged_user = $_SESSION["logged_user"];
+$smarty->assign("logged_user", $logged_user);
 
 $err = null;
-if (isset($_GET["err"])) {
-    $err = $_GET["err"];
-}
-
-$smarty->assign("site", "page_comments_request");
-$smarty->assign("logged_user", $logged_user);
+if (isset($_GET["err"])) $err = $_GET["err"];
 $smarty->assign("err", $err);
+
 $smarty->assign("genres", getGenres());
+$smarty->assign("pending_comments", getPendingComments());
+$smarty->assign("site", "page_comments_request");
 
-
-$pending_comments = getPendingComments();
-
-$smarty -> assign("pending_comments", $pending_comments);
-$smarty -> assign("genres", getGenres());
 $smarty->display("page_comments_request.html.tpl");

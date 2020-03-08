@@ -1,9 +1,14 @@
 <?php
-$site = $_GET["site"];
-$getvariable = $_GET["getvariable"];
 session_start();
 session_destroy();
-if(isset($getvariable))
-    header('location:' . $site . '.php?id='.$getvariable);
+
+$site = $_GET["site"];
+$getvariable = $_GET["getvariable"];
+
+$base_site_name = 'location:' . $site . '.php?';
+$movie_id = 'id=' . $getvariable;
+
+if (isset($getvariable))
+    header($base_site_name . $movie_id);
 else
-    header('location:' . $site . '.php');
+    header($base_site_name);

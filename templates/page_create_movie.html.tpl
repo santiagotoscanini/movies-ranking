@@ -73,6 +73,7 @@
 
     </div>
 {else}
+    <!-- TODO hacer un componente para mostrar cuando se accede a un lugar prohibido-->
     error
 {/if}
 </body>

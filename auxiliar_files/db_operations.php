@@ -163,7 +163,7 @@ function setCommentToApprovedOrRejected($id, $status){
     );
 }
 
-function getCommentFromUser($movie_id, $logged_user){
+function getCommentFromUserInMovie($movie_id, $logged_user){
 
     if(isset($logged_user)){
         $cn = connectDB();

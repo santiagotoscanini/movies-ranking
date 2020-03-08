@@ -14,22 +14,25 @@
 
 <body>
 {include file="header.html.tpl" genres=$genres site=$site}
+{if isset($logged_user) && ($logged_user.es_administrador==1)}
+    <div class="comments">
 
-<div class="comments">
+        <h1 style="margin: 30px;">
+            Comments request
+        </h1>
 
-    <h1 style="margin: 30px;">
-        Comments request
-    </h1>
-
-    <div class="comments-container">
-        {if (isset($pending_comments))}
-            {foreach from=$pending_comments item=comment}
-                {include file="movie_comment_request.html.tpl" movie=$comment}
-            {/foreach}
-        {else}
-            <div>No pendding comments</div>
-        {/if}
+        <div class="comments-container">
+            {if (isset($pending_comments))}
+                {foreach from=$pending_comments item=comment}
+                    {include file="movie_comment_request.html.tpl" movie=$comment}
+                {/foreach}
+            {else}
+                <div>No pendding comments</div>
+            {/if}
+        </div>
     </div>
-</div>
-
+{else}
+    <!-- TODO hacer un componente para mostrar cuando se accede a un lugar prohibido-->
+    error
+{/if}
 </body>
