@@ -164,6 +164,27 @@ function getApprovedComments($movieId, $page)
     return $cn->fetchAll();
 }
 
+function getApprovedCommentsOfMovie($movie_id){
+
+    $cn = connectDB();
+    $cn->query(
+        "SELECT comentarios.puntuacion
+        FROM comentarios WHERE comentarios.id_pelicula = :id AND comentarios.estado = 'APROBADO'",
+        array( array("id", $movie_id, 'int')
+        ));
+    return $cn->fetchAll();
+}
+
+function setPoints($total_points, $id_movie){
+    $cn = connectDB();
+    $cn->query('UPDATE peliculas SET puntuacion = :points WHERE id= :id',
+        array(
+            array("points", $total_points, "float"),
+            array("id", $id_movie, "int")
+        )
+    );
+}
+
 function cantOfPendingCommentsPages()
 {
     $elemCant = 5;

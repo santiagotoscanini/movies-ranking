@@ -23,14 +23,7 @@
             Comments request
         </h1>
 
-        <div class="comments-container">
-            {if (isset($pending_comments)) && isset($pending_comments["id"])}
-                {foreach from=$pending_comments item=comment}
-                    {include file="movie_comment_request.html.tpl" movie=$comment}
-                {/foreach}
-            {else}
-                <div>No pendding comments</div>
-            {/if}
+        <div id="comments-container">
         </div>
     </div>
 {else}

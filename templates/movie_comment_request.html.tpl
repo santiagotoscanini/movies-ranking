@@ -11,7 +11,7 @@
             <p class="card-text" style="padding-top: 5px;">{$comment.mensaje}</p>
         </div>
         <div style="float: right">
-            <a href="accept_or_reject_comment.php?id={$comment.id}&status=APROBADO" class="card-link"
+            <a href="accept_or_reject_comment.php?id={$comment.id}&status=APROBADO&id_movie={$comment.id_pelicula}" class="card-link"
                id="accept">Accept</a>
             <a href="accept_or_reject_comment.php?id={$comment.id}&status=RECHAZADO" class="card-link" id="reject">Reject</a>
         </div>

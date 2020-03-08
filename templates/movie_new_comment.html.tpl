@@ -6,12 +6,19 @@
                     <h4 class="card-title">Sorry:</h4>
                     <div class="card-body"
                          style="background: #f3f3f3; border-radius: 3px; border-color: #e1e1e1; margin-top: 8px; margin-bottom: 10px;">
-                        <p class="card-text" style="padding-top: 5px;">You have already commented on this movie..</p>
+                        <p class="card-text" style="padding-top: 5px;">You have already commented on this movie.</p>
                     </div>
-                {elseif $user_comment.estado='RECHAZADO'}
-                    <p>Tu comentario fue rechazado</p>
+                {elseif $user_comment.estado=='RECHAZADO'}
+                    <h4 class="card-title">Sorry:</h4>
+                    <div class="card-body"
+                         style="background: #f3f3f3; border-radius: 3px; border-color: #e1e1e1; margin-top: 8px; margin-bottom: 10px;">
+                        <p class="card-text" style="padding-top: 5px;">Your comment was rejected.</p>
+                    </div>
                 {else}
-                    <p>Tu comentario esta pendiente</p>
+                    <div class="card-body"
+                         style="background: #f3f3f3; border-radius: 3px; border-color: #e1e1e1; margin-top: 8px; margin-bottom: 10px;">
+                        <p class="card-text" style="padding-top: 5px;">Your comment is pending.</p>
+                    </div>
                 {/if}
             {else}
                 <form action="create_new_comment.php" method="POST">
