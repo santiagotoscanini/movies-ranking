@@ -33,6 +33,8 @@
             <li class="nav-item dropdown">
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Generos</a>
                 <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item genre-selected" catId="{'0'}">Todos</a>
+                    </li>
                     {foreach from=$genres item=genre}
                         <li><a href="#" class="dropdown-item genre-selected" catId="{$genre.id}">{$genre.nombre}</a>
                         </li>
