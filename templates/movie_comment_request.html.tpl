@@ -2,7 +2,7 @@
     <div class="card-body">
         <h4 class="card-title">{$comment.titulo}</h4>
         <h5 class="card-subtitle mb-2 text-muted" style="float: left; margin-right: 10px">
-            Points: {$comment.puntuacion}</h5>
+            Puntuación: {$comment.puntuacion}</h5>
         <div style="margin-bottom: 30px;">
             <h6 class="card-subtitle mb-2 text-muted" style="float: right; margin-left: 10px;">{$comment.alias}</h6>
         </div>
@@ -12,8 +12,8 @@
         </div>
         <div style="float: right">
             <a href="accept_or_reject_comment.php?id={$comment.id}&status=APROBADO&id_movie={$comment.id_pelicula}" class="card-link"
-               id="accept">Accept</a>
-            <a href="accept_or_reject_comment.php?id={$comment.id}&status=RECHAZADO" class="card-link" id="reject">Reject</a>
+               id="accept">Aceptar</a>
+            <a href="accept_or_reject_comment.php?id={$comment.id}&status=RECHAZADO" class="card-link" id="reject">Denegar</a>
         </div>
     </div>
 </div>

@@ -10,10 +10,10 @@ $smarty->assign("page", $page);
 
 $catId = 0;
 if (isset($_GET["catId"])) $catId = $_GET["catId"];
-$busqueda = "";
-if (isset($_GET["busqueda"])) $busqueda = $_GET["busqueda"];
-$smarty->assign("movies", getMovies($catId, $page, $busqueda));
+$search = "";
+if (isset($_GET["search"])) $search = $_GET["search"];
+$smarty->assign("movies", getMovies($catId, $page, $search));
 
-$smarty->assign("pages", cantOfMoviePages($catId, $busqueda));
+$smarty->assign("pages", cantOfMoviePages($catId, $search));
 
 $smarty->display("movies_container.html.tpl");

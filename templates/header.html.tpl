@@ -20,7 +20,6 @@
     </div>
     <ul class="nav navbar-nav navbar-left mr-auto">
         {if (isset($logged_user)) && $logged_user["es_administrador"]==1}
-            <!-- TODO: falta verificar que sea admin-->
             <li class="nav-item active">
                 <a href="page_comments_request.php" class="nav-link">Comentarios</a>
             </li>
@@ -48,7 +47,7 @@
             <li class="nav-item">
                 <div class="navbar-form form-inline">
                     <div class="input-group search-box">
-                        <input type="text" class="form-control search-movie" placeholder="Movie name..."/>
+                        <input type="text" class="form-control search-movie" placeholder="Nombre pelicula..."/>
                         <span class="input-group-addon">
                     <i class="material-icons">&#xE8B6;</i>
                 </span>
@@ -58,7 +57,6 @@
         {/if}
 
         {if isset($err)}
-            <!-- TODO: falta verificar que el error sea 1,2 o 3 para ver si los datos estan mal al loggear,ya existe usuario al registrar o la contraseña es de menos de 6 caracteres-->
             {if $err==1}
                 <li>
                     <p style="margin-top:15px; margin-right: 10px" class="text-danger align-self-center">
@@ -93,43 +91,43 @@
             <div class="logged-user-container">
                 {if isset($getvariable)}
                     <a href="logout.php?site={$site}&getvariable={$getvariable}"
-                       class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Logout</a>
+                       class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Salir</a>
                 {else}
                     <a href="logout.php?site={$site}"
-                       class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Logout</a>
+                       class="btn btn-danger dropdown-toggle get-started-btn mt-1 mb-1">Salir</a>
                 {/if}
                 <ul class="dropdown-menu form-wrapper">
             </div>
         {else}
             <li class="nav-item mr-4">
-                <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
+                <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Ingresar</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
                         {if isset($getvariable)}
                             <form action="login.php?getvariable={$getvariable}&site={$site}" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Username" required="required"
+                                    <input type="text" class="form-control" placeholder="Correo" required="required"
                                            name="email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password"
+                                    <input type="password" class="form-control" placeholder="Contraseña"
                                            required="required"
                                            name="pass">
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-block" value="Login">
+                                <input type="submit" class="btn btn-primary btn-block" value="Ingresar">
                             </form>
                         {else}
                             <form action="login.php?site={$site}" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Username" required="required"
+                                    <input type="text" class="form-control" placeholder="Correo" required="required"
                                            name="email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password"
+                                    <input type="password" class="form-control" placeholder="Contraseña"
                                            required="required"
                                            name="pass">
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-block" value="Login">
+                                <input type="submit" class="btn btn-primary btn-block" value="Ingresar">
                             </form>
                         {/if}
                     </li>
@@ -137,8 +135,7 @@
             </li>
             <li class="nav-item mt-2">
                 <a href="#" data-toggle="dropdown"
-                   class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign
-                    up</a>
+                   class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Registrarse</a>
                 <ul class="dropdown-menu form-wrapper">
                     <li>
                         {if isset($getvariable)}
@@ -156,7 +153,7 @@
                                     <input type="password" class="form-control" placeholder="Contraseña"
                                            required="required" name="pass">
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+                                <input type="submit" class="btn btn-primary btn-block" value="Registrarse">
                             </form>
                         {else}
                             <form action="create_user.php?site={$site}" method="post">
@@ -173,7 +170,7 @@
                                     <input type="password" class="form-control" placeholder="Contraseña"
                                            required="required" name="pass">
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+                                <input type="submit" class="btn btn-primary btn-block" value="Registrarse">
                             </form>
                         {/if}
                     </li>

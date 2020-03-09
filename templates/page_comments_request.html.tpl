@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Comments request</title>
+    <title>Solicitudes de comentarios</title>
 
     <link rel="stylesheet" href="lib/font-awesome/4.7.0/font-awesome.min">
     <script type="text/javascript" src="lib/jquery/3.4.1/jquery.min"></script>
@@ -20,14 +20,17 @@
     <div class="comments">
 
         <h1 style="margin: 30px;">
-            Comments request
+            Solicitudes de comentarios
         </h1>
 
         <div id="comments-container">
         </div>
     </div>
 {else}
-    <!-- TODO hacer un componente para mostrar cuando se accede a un lugar prohibido-->
-    error
+    <div class="card" style="border-color: red; width: 400px; margin: 30px">
+        <div class="card-body" style="border-color: red">
+            Lo sentimos, no tienes permiso para acceder a este sitio.
+        </div>
+    </div>
 {/if}
 </body>

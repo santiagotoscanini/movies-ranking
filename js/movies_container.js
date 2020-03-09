@@ -8,7 +8,7 @@ function load() {
         data: {
             catId: cat,
             pag: pag,
-            busqueda: txt
+            search: txt
         },
         dataType: "html"
     }).done(function (resp) {
