@@ -24,21 +24,25 @@ function getGenres()
 
 function cantOfMoviePages($idCat = 0, $filtro = "")
 {
-    $filtro = '%' . $filtro . '%';
     $elemCant = 6;
+    if ($filtro == '' || $filtro == "" || $filtro == " ") {
+        $filtro = '%';
+    } else {
+        $filtro = '%' . $filtro . '%';
+    }
 
     $cn = connectDB();
 
     if ($idCat == 0) {
         $cn->query(
             'SELECT count(*) as total FROM peliculas
-            WHERE peliculas.titulo LIKE :filtro ', array(
+            WHERE titulo LIKE :filtro ', array(
             array("filtro", $filtro, 'string')
         ));
     } else {
         $cn->query(
             'SELECT count(*) as total FROM peliculas
-            WHERE pelicula.id_genero = :id AND peliculas.titulo LIKE :filtro ', array(
+            WHERE id_genero = :id AND titulo LIKE :filtro', array(
             array("id", $idCat, 'int'),
             array("filtro", $filtro, 'string')
         ));
@@ -46,6 +50,7 @@ function cantOfMoviePages($idCat = 0, $filtro = "")
 
     $row = $cn->fetchAssoc();
     $total = $row["total"];
+
     $pag = ceil($total / $elemCant);
     if ($pag == 0) {
         $pag = 1;
@@ -156,6 +161,7 @@ function getApprovedComments($movieId, $page)
         WHERE comentarios.id_pelicula = :id AND
         usuarios.id = comentarios.id_usuario AND
         comentarios.estado = 'APROBADO'
+        ORDER BY comentarios.id DESC 
         LIMIT :offset, :tamano",
         array(array("offset", $offset, 'int'),
             array("tamano", $elemCant, 'int'),
@@ -164,18 +170,20 @@ function getApprovedComments($movieId, $page)
     return $cn->fetchAll();
 }
 
-function getApprovedCommentsOfMovie($movie_id){
+function getApprovedCommentsOfMovie($movie_id)
+{
 
     $cn = connectDB();
     $cn->query(
         "SELECT comentarios.puntuacion
         FROM comentarios WHERE comentarios.id_pelicula = :id AND comentarios.estado = 'APROBADO'",
-        array( array("id", $movie_id, 'int')
+        array(array("id", $movie_id, 'int')
         ));
     return $cn->fetchAll();
 }
 
-function setPoints($total_points, $id_movie){
+function setPoints($total_points, $id_movie)
+{
     $cn = connectDB();
     $cn->query('UPDATE peliculas SET puntuacion = :points WHERE id= :id',
         array(
@@ -215,6 +223,7 @@ function getPendingComments($page)
             FROM peliculas, comentarios, usuarios
             WHERE comentarios.estado = 'PENDIENTE' AND peliculas.id = comentarios.id_pelicula 
                 AND usuarios.id = comentarios.id_usuario
+                ORDER BY comentarios.id DESC 
                 LIMIT :offset, :tamano",
         array(array("offset", $offset, 'int'),
             array("tamano", $elemCant, 'int')));

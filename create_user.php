@@ -15,9 +15,14 @@ $error_id = "err=2";
 $site_name = $base_site_name;
 if (isset($getvariable)) $base_site_name = $base_site_name . $movie_id . '&';
 
+
 $userAlreadyExist = existUserWithEmail($email);
 
-if ($userAlreadyExist) {
+if(strlen($pass) < 6){
+    $error_id = "err=3";
+    header($base_site_name . $error_id);
+}
+else if ($userAlreadyExist) {
     header($base_site_name . $error_id);
 } else {
     createUser($email, $user, $pass);

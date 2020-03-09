@@ -16,7 +16,7 @@ $id = createMovie($movie_name, $genre_id, $date, $description, $director, $youtu
 
 $file_ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 $file_name = "movie_posters/{$id}." . $file_ext;
-print_r($file['tmp_name']);
+
 move_uploaded_file($file['tmp_name'], $file_name);
 
 header('location:page_create_movie.php');

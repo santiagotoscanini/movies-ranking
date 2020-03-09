@@ -17,4 +17,4 @@ if (isset($_POST["comment"])) $new_comment = $_POST["comment"];
 
 setNewComment($new_comment, $logged_user, $movie_id, $points);
 
-header("location:page_movie_information.php");
+header("location:page_movie_information.php?id={$movie_id}");

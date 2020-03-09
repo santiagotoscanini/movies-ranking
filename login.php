@@ -19,6 +19,6 @@ if (isset($getvariable)) $base_site_name = $base_site_name . $movie_id . '&';
 if (isset($logged_user)) {
     session_start();
     $_SESSION["logged_user"] = $logged_user;
-    header($site_name);
+    header($base_site_name);
 } else
     header($base_site_name . $error_id);

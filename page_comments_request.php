@@ -20,6 +20,7 @@ $smarty->assign("page", $page);
 $smarty->assign("genres", getGenres());
 $smarty->assign("pending_comments", getPendingComments($page));
 $smarty->assign("site", "page_comments_request");
-$smarty->assign("pages", cantOfMoviePages());
+$smarty->assign("pages", cantOfPendingCommentsPages());
+
 
 $smarty->display("page_comments_request.html.tpl");

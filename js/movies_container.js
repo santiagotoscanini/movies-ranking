@@ -33,12 +33,14 @@ $(document).ready(function () {
 
     $(".genre-selected").click(function () {
         cat = $(this).attr("catId");
+        pag=1;
         load();
     });
 
     $(".search-movie").keyup(function(event) {
         if($(".search-movie").is(":focus") && event.key == "Enter"){
             txt = $(".search-movie").val();
+            pag=1;
             load();
         }
     });

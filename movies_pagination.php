@@ -14,6 +14,6 @@ $busqueda = "";
 if (isset($_GET["busqueda"])) $busqueda = $_GET["busqueda"];
 $smarty->assign("movies", getMovies($catId, $page, $busqueda));
 
-$smarty->assign("pages", cantOfMoviePages());
+$smarty->assign("pages", cantOfMoviePages($catId, $busqueda));
 
 $smarty->display("movies_container.html.tpl");

@@ -59,11 +59,13 @@
                     <label>Code of the youtube trailer</label>
                     <input type="text" name="youtube_trailer" class="form-control" placeholder="Link here">
                 </div>
-                <label>Movie Poster</label>
-                <div class="custom-file">
-                    <input name="poster" type="file" class="custom-file-input" accept=".jpg,.png"
-                           id="customFile" required>
-                    <label class="custom-file-label" for="customFile">Choose file</label>
+                <div class="form-group col-md-6">
+                    <label>Movie Poster</label>
+                    <div class="custom-file form-group">
+                        <input name="poster" type="file" class="custom-file-input form-control" accept=".jpg,.png"
+                               id="customFile" required>
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary btn-save">Save</button>
